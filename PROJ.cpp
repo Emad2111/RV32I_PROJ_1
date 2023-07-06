@@ -77,20 +77,20 @@ void instDecExec(unsigned int instWord)
 			cout << "\tSUB\t" << RN[rd] << ", " << RN[rs1] << ", " << RN[rs2] << "\n";
 
 			regs[rd] = regs[rs1] - regs[rs2];
-			pc += 4;
+			//pc += 4;
 			break;
 		}
 			  else {
 			cout << "\tADD\t" << RN[rd] << ", " << RN[rs1] << ", " << RN[rs2] << "\n";
 			regs[rd] = regs[rs1] + regs[rs2];
-			pc += 4;
+			//pc += 4;
 			break;
 		}
 
 		case 1: {
 			cout << "\tSLL\t" << RN[rd] << "," << RN[rs1] << "," << RN[rs2] << "\n";
 			regs[rd] = regs[rs1] << regs[rs2];
-			pc += 4;
+			//pc += 4;
 			break;
 
 		}
@@ -104,45 +104,45 @@ void instDecExec(unsigned int instWord)
 			else
 				regs[rd] = 0;
 
-			pc += 4;
+			//pc += 4;
 			break;
 		}
 
 		case 3: {
 			cout << "\tSLTU\t" << RN[rd] << "," << RN[rs1] << "," << RN[rs2] << "\n";
 			regs[rd] = regs[rs1] < regs[rs2] ? 1 : 0;
-			pc += 4;
+			//pc += 4;
 			break;
 		}
 		case 4: {
 			cout << "\tXOR\t" << RN[rd] << "," << RN[rs1] << ", " << RN[rs2] << "\n";
 			regs[rd] = regs[rs1] ^ regs[rs2];
-			pc += 4;
+			//pc += 4;
 			break;
 		}
 		case 5: if (funct7 == 32) {
 			cout << "\tSRA\t" << RN[rd] << ", " << RN[rs1] << ", " << RN[rs2] << "\n";
 			regs[rd] = regs[rs1] >> (regs[rs2] & 0x1F);
-			pc += 4;
+			//pc += 4;
 			break;
 		}
 			  else {
 			cout << "\tSRL\t" << RN[rd] << ", " << RN[rs1] << ", " << RN[rs2] << "\n";
 			regs[rd] = regs[rs1] >> (regs[rs2] & 0x1F);
-			pc += 4;
+			//pc += 4;
 			break;
 		}
 
 
 		case 6: {cout << "\tOR\tx" << RN[rd] << ", " << RN[rs1] << ", " << RN[rs2] << "\n";
 			regs[rd] = regs[rs1] | regs[rs2];
-			pc += 4;
+			//pc += 4;
 			break;
 		}
 		case 7: {
 			cout << "\tAND\t" << RN[rd] << "," << RN[rs1] << ", " << RN[rs2] << "\n";
 			regs[rd] = regs[rs1] & regs[rs2];
-			pc += 4;
+			//pc += 4;
 			break;
 		}
 
@@ -156,31 +156,31 @@ void instDecExec(unsigned int instWord)
 			cout << "\tADDI\t" << RN[rd] << ", " << RN[rs1] << ", " << dec << (int)I_imm << "\n";
 
 			regs[rd] = regs[rs1] + I_imm;
-			pc += 4;
+			//pc += 4;
 			break;
 		}
 		case 1: {
 			cout << "\tSLLI\t" << RN[rd] << ", " << RN[rd] << ", " << I_imm << "\n";
 			regs[rd] = regs[rs1] << (I_imm & 0x1F);
-			pc += 4;
+			//pc += 4;
 			break; }
 
 		case 2: {
 			cout << "\tSLTI\t" << RN[rd] << "," << RN[rs1] << ", " << dec << (int)I_imm << "\n";
 			regs[rd] = (regs[rs1] < I_imm) ? 1 : 0;
-			pc += 4;
+			//pc += 4;
 			break;
 		}
 		case 3: {
 			cout << "\tSLTIU\t" << RN[rd] << ", " << RN[rs1] << ", " << dec << (int)I_imm << "\n";
 			regs[rd] = (regs[rs1] < I_imm) ? 1 : 0;
-			pc += 4;
+			//pc += 4;
 			break;
 		}
 		case 4: {
 			cout << "\tXORI\t" << RN[rd] << ", " << RN[rs1] << ", " << dec << (int)I_imm << "\n";
 			regs[rd] = regs[rs1] ^ I_imm;
-			pc += 4;
+			//pc += 4;
 			break; }
 
 		case 5: if (funct7 == 32)
@@ -192,24 +192,23 @@ void instDecExec(unsigned int instWord)
 			cout << "\tSRAI\t" << RN[rd] << ", " << RN[rs1] << "," << dec << I_imm << "\n";
 			regs[rd] = regs[rs1] >> (I_imm & 0x1F);
 		}
-			  pc += 4;
+			  //pc += 4;
 			  break;
 
 		case 6: {
 			cout << "\tORI\t" << RN[rd] << ", " << RN[rs1] << ", " << hex << "0x" << (int)I_imm << "\n";
 			regs[rd] = regs[rs1] | I_imm;
-			pc += 4;
+			//pc += 4;
 			break;
 		}
 		case 7: {
 			cout << "\tANDI\t" << RN[rd] << ", " << RN[rs1] << ", " << hex << "0x" << (int)I_imm << "\n";
 			regs[rd] = regs[rs1] & I_imm;
-			pc += 4;
+			//pc += 4;
 			break; }
 
 
-		default:
-			cout << "\tUnkown I Instruction \n";
+		
 		}
 
 	}
@@ -226,7 +225,7 @@ void instDecExec(unsigned int instWord)
 			else {
 				cout << "ERROR: WRONG ADDRESS\n";
 			}
-			pc += 4;
+			//pc += 4;
 			break;
 		}
 
@@ -242,7 +241,7 @@ void instDecExec(unsigned int instWord)
 			else {
 				cout << "ERROR: WRONG ADDRESS\n";
 			}
-			pc += 4;
+			//pc += 4;
 			break;
 		}
 
@@ -260,7 +259,7 @@ void instDecExec(unsigned int instWord)
 			else {
 				cout << "ERROR: WRONG ADDRESS\n";
 			}
-			pc += 4;
+			//pc += 4;
 			break;
 		}
 
@@ -273,7 +272,7 @@ void instDecExec(unsigned int instWord)
 			else {
 				cout << "ERROR: WRONG ADDRESS\n";
 			}
-			pc += 4;
+			//pc += 4;
 
 			break;
 		}
@@ -289,7 +288,7 @@ void instDecExec(unsigned int instWord)
 			else {
 				cout << "ERROR: WRONG ADDRESS\n";
 			}
-			pc += 4;
+			//pc += 4;
 			break;
 
 		}
@@ -308,7 +307,7 @@ void instDecExec(unsigned int instWord)
 			else {
 				cout << "ERROR: WRONG ADDRESS\n";
 			}
-			pc += 4;
+			//pc += 4;
 
 			break;
 		}
@@ -338,7 +337,7 @@ void instDecExec(unsigned int instWord)
 			else {
 				cout << "ERROR: WRONG ADDRESS\n";
 			}
-			pc += 4;
+			//pc += 4;
 
 			break; }
 
@@ -352,9 +351,10 @@ void instDecExec(unsigned int instWord)
 			cout << "\tBEQ\t" << RN[rs2] << ", " << RN[rs1] << ", " << hex << "0x" << hex << B_imm << "\n";
 			if (regs[rs1] == regs[rs2]) {
 				pc += B_imm; // Increment pc by the branch immediate value
+				pc -= 4;
 			}
 			else {
-				pc += 4; //  move to the next instruction (increment by 4)
+				//pc += 4; //  move to the next instruction (increment by 4)
 			}
 			break;
 		}
@@ -362,9 +362,10 @@ void instDecExec(unsigned int instWord)
 			cout << "\tBNE\t" << RN[rs2] << ", " << RN[rs1] << ", " << hex << "0x" << B_imm << "\n";
 			if (regs[rs1] != regs[rs2]) {
 				pc += B_imm; // Increment pc by the branch immediate value
+				pc -= 4;
 			}
 			else {
-				pc += 4; //  move to the next instruction (increment by 4)
+				//pc += 4; //  move to the next instruction (increment by 4)
 			}
 			break; }
 
@@ -372,9 +373,10 @@ void instDecExec(unsigned int instWord)
 			cout << "\tBLT\t" << RN[rs2] << ", " << RN[rs1] << ", " << hex << "0x" << B_imm << "\n";
 			if (static_cast<int32_t>(regs[rs1]) < static_cast<int32_t>(regs[rs2])) {
 				pc += B_imm; // Increment pc by the branch immediate value
+				pc -= 4;
 			}
 			else {
-				pc += 4; //  move to the next instruction (increment by 4)
+				//pc += 4; //  move to the next instruction (increment by 4)
 			}
 			break; }
 
@@ -382,9 +384,10 @@ void instDecExec(unsigned int instWord)
 			cout << "\tBGE\t" << RN[rs2] << ", " << RN[rs1] << ", " << hex << "0x" << B_imm << "\n";
 			if (static_cast<int32_t>(regs[rs1]) >= static_cast<int32_t>(regs[rs2])) {
 				pc += B_imm; // Increment pc by the branch immediate value
+				pc -= 4;
 			}
 			else {
-				pc += 4; // move to the next instruction (increment by 4)
+				//pc += 4; // move to the next instruction (increment by 4)
 			}
 			break; }
 
@@ -392,9 +395,10 @@ void instDecExec(unsigned int instWord)
 			cout << "\tBLTU\t" << RN[rs2] << ", " << RN[rs1] << ", " << hex << "0x" << B_imm << "\n";
 			if (static_cast<uint32_t>(regs[rs1]) < static_cast<uint32_t>(regs[rs2])) {
 				pc += B_imm; // Increment pc by the branch immediate value
+				pc -= 4;
 			}
 			else {
-				pc += 4; //  move to the next instruction (increment by 4)
+				//pc += 4; //  move to the next instruction (increment by 4)
 			}
 			break; }
 
@@ -402,9 +406,10 @@ void instDecExec(unsigned int instWord)
 			cout << "\tBGEU\t" << RN[rs2] << ", " << RN[rs1] << ", " << hex << "0x" << B_imm << "\n";
 			if (static_cast<uint32_t>(regs[rs1]) >= static_cast<uint32_t>(regs[rs2])) {
 				pc += B_imm; // Increment the program counter by the branch immediate value
+				pc -= 4;
 			}
 			else {
-				pc += 4; // If the condition is false, move to the next instruction (increment by 4)
+				//pc += 4; // If the condition is false, move to the next instruction (increment by 4)
 			}
 			break; }
 
@@ -413,7 +418,7 @@ void instDecExec(unsigned int instWord)
 	{
 		cout << "\tLUI\t" << RN[rd] << ", " << dec << U_imm << "\n";
 		regs[rd] = U_imm << 12;
-		pc += 4;
+		//pc += 4;
 
 	}
 
@@ -421,14 +426,14 @@ void instDecExec(unsigned int instWord)
 	{
 		cout << "\tAUIPC\t" << RN[rd] << ", " << dec << U_imm << "\n";
 		regs[rd] = pc + (U_imm << 12);
-		pc += 4;
+		//pc += 4;
 	}
 
 	else if (opcode == 0x6f)
 	{
 		cout << "\tJAL\t" << RN[rd] << ", " << hex << J_imm << "\n";
 		regs[rd] = pc + 4; // Save the return address (PC + 4) into the specified register
-		pc += 4; // Jump to the target address (PC + J_imm)
+		//pc += 4; // Jump to the target address (PC + J_imm)
 	}
 
 	else if (instWord == 0x00000073)
@@ -452,7 +457,7 @@ void instDecExec(unsigned int instWord)
 			cout << "Unsupported ecall: heloo" << regs[17] << endl;
 			break;
 		}
-		pc += 4;
+		//pc += 4;
 	}
 
 }
@@ -488,14 +493,14 @@ int main(int argc, char* argv[]) {
 		pc = 0;
 		cout << "pc = " << fsize << endl;
 		// Process the instructions in the memory
-		while (pc < 100) {
+		while (pc < fsize) {
 			// Extract the instruction word from memory
 			instWord = (unsigned char)memory[pc] |
 				(((unsigned char)memory[pc + 1]) << 8) |
 				(((unsigned char)memory[pc + 2]) << 16) |
 				(((unsigned char)memory[pc + 3]) << 24);
 
-			//pc += 4;
+			pc += 4;
 
 
 			//PROJ.exe C:\Users\ae912\OneDrive\Desktop\t0.bin
