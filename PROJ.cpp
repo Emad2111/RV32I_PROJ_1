@@ -502,14 +502,13 @@ int main(int argc, char* argv[]) {
 				(((unsigned char)memory[pc + 2]) << 16) |
 				(((unsigned char)memory[pc + 3]) << 24);
 
-			pc += 4;
 
 
 			//PROJ.exe C:\Users\ae912\OneDrive\Desktop\t0.bin
 			// cd "C:\Users\ae912\source\repos\PROJ\x64\Debug"
 
 			instDecExec(instWord);
-
+			pc += 4;
 		}
 
 
