@@ -214,7 +214,7 @@ void instDecExec(unsigned int instWord)
 
 	}
 	//__________________________________________________I-type load instructions________________________________________________
-	/*else if (opcode == 0x03) {
+	else if (opcode == 0x03) {
 		switch (funct3) {
 		case 0:
 		{
@@ -345,7 +345,7 @@ void instDecExec(unsigned int instWord)
 
 		}
 	}
-	*/
+	
 	else if (opcode == 0x63)													// BRANCH INSTRUCTIONS
 		switch (funct3) {
 		case 0: {
